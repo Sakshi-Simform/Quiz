@@ -38,7 +38,13 @@ if (app) {
 
                 <div class="timer" id="timer">10</div>
                 <h2 id="question-text">Question</h2>
-                <div id="options-container"></div>
+                <div id="options-container">
+                 <div id="options-container">
+            <button class="answer-option">Option 1</button>
+            <button class="answer-option">Option 2</button>
+            <button class="answer-option">Option 3</button>
+            <button class="answer-option">Option 4</button>
+        </div></div>
                 <button id="next-btn" class="hidden">Next Question</button>
             </div>
 
