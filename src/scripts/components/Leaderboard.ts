@@ -14,7 +14,6 @@ export class Leaderboard {
             { name: 'Player 2', score: player2Score }
         ];
 
-        // Sort by score descending
         players.sort((a, b) => b.score - a.score);
 
         players.forEach(player => {
