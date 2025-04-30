@@ -30,6 +30,7 @@ export class QuizGame {
         this.setupEventListeners();
         this.initializeUI();
         this.loadGameState();
+        this.nextQuestion();
 
         console.log('QuizGame initialized');
     }
@@ -45,7 +46,6 @@ export class QuizGame {
         this.quizUI.bindStartButton(() => this.startGame());
         this.quizUI.bindNextButton(() => this.nextQuestion());
         this.quizUI.bindRestartButton(() => this.restartGame());
-        this.quizUI.bindOptionClick((index) => this.selectAnswer(index));
     }
 
     private startGame(): void {
@@ -62,7 +62,6 @@ export class QuizGame {
             timeLeft: 10,
             category,
             difficulty
-            
         };
 
         this.storageService.saveGameState(this.gameState);
@@ -83,6 +82,7 @@ export class QuizGame {
         this.quizUI.hideNextButton();
         this.timer.reset();
         this.timer.start();
+        this.quizUI.setAnswerClickCallback((index) => this.selectAnswer(index));
     }
 
     private getCurrentQuestion(): Question | null {
@@ -96,7 +96,7 @@ export class QuizGame {
         const currentQuestion = this.getCurrentQuestion();
         if (!currentQuestion) return;
 
-        this.timer.stop();
+        
 
         this.quizUI.highlightAnswer(selectedIndex, currentQuestion.correctAnswer);
 
@@ -108,6 +108,7 @@ export class QuizGame {
             }
             this.quizUI.updateScores(this.gameState.player1Score, this.gameState.player2Score);
         }
+        this.timer.stop();
 
         this.storageService.saveGameState(this.gameState);
         this.quizUI.showNextButton();
@@ -117,8 +118,9 @@ export class QuizGame {
         const currentQuestion = this.getCurrentQuestion();
         if (!currentQuestion) return;
 
-        this.quizUI.highlightAnswer(-1, currentQuestion.correctAnswer);
+       this.quizUI.highlightAnswer(-1, currentQuestion.correctAnswer);
         this.quizUI.showNextButton();
+        
     }
 
     private nextQuestion(): void {
