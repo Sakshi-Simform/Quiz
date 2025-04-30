@@ -1,0 +1,29 @@
+{
+  "name": "quiz",
+  "version": "1.0.0",
+  "description": "- Players: 2 (alternating or side-by-side) - Resumable: Yes - Config: Static questions in JavaScript (no external JSON)",
+  "type": "module",
+ "scripts": {
+  "dev": "parcel serve ./src/index.html",
+  "type-check": "tsc -b --noEmit",
+  "build": "npm run type-check && parcel build ./src/index.html --no-autoinstall --no-optimize",
+  "format": "prettier src --write",
+  "clean": "rm -rf dist .parcel-cache"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sakshi-Simform/Quiz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sakshi-Simform/Quiz/issues"
+  },
+  "homepage": "https://github.com/Sakshi-Simform/Quiz#readme",
+ "devDependencies": {
+    "parcel": "^2.14.4",
+    "typescript": "^5.8.2",
+    "prettier": "^3.5.3"
+  }
+}
