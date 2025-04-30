@@ -157,10 +157,7 @@ export class QuizUI {
     bindOptionClick(handler: (index: number) => void): void {
         this.optionsContainer.addEventListener('click', (e: MouseEvent) => {
             const target = e.target as HTMLElement;
-            if (target.classList.contains('option')) {
-                const index = parseInt(target.dataset.index || '0', 10);
-                handler(index);
-            }
+            
         });
     }
 }
