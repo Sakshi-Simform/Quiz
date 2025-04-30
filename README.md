@@ -16,4 +16,4 @@
 - Allow users to select category and difficulty before starting the quiz.
 
 # Add final leaderboard.
-## Focus: Timers, modular JS, DOM manipulation, game state storage.
+# Focus: Timers, modular JS, DOM manipulation, game state storage.
