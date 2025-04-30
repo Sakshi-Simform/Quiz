@@ -62,6 +62,7 @@ export class QuizGame {
             timeLeft: 10,
             category,
             difficulty
+            
         };
 
         this.storageService.saveGameState(this.gameState);
@@ -156,3 +157,4 @@ export class QuizGame {
         this.quizUI.showSetupScreen();
     }
 }
+
