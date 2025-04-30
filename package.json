@@ -4,7 +4,7 @@
   "description": "- Players: 2 (alternating or side-by-side) - Resumable: Yes - Config: Static questions in JavaScript (no external JSON)",
   "type": "module",
  "scripts": {
-  "dev": "parcel serve ./src/index.html --port 5500",
+  "dev": "parcel serve ./src/index.html",
   "type-check": "tsc -b --noEmit",
   "build": "npm run type-check && parcel build ./src/index.html --no-autoinstall --no-optimize",
   "format": "prettier src --write",
