@@ -96,8 +96,6 @@ export class QuizGame {
         const currentQuestion = this.getCurrentQuestion();
         if (!currentQuestion) return;
 
-        
-
         this.quizUI.highlightAnswer(selectedIndex, currentQuestion.correctAnswer);
 
         if (selectedIndex === currentQuestion.correctAnswer) {
@@ -119,7 +117,7 @@ export class QuizGame {
         if (!currentQuestion) return;
 
        this.quizUI.highlightAnswer(-1, currentQuestion.correctAnswer);
-        this.quizUI.showNextButton();
+       this.nextQuestion();
         
     }
 
