@@ -1,4 +1,4 @@
-import { Question, GameState } from "../model";
+import { Question } from "../model";
 
 export class QuizUI {
     private setupScreen!: HTMLElement;
@@ -60,15 +60,41 @@ export class QuizUI {
 
         this.questionText.textContent = question.text;
         this.questionCategoryElement.textContent = `${question.category} (${question.difficulty})`;
-        this.optionsContainer.innerHTML = '';
+        this.optionsContainer.innerHTML = ''; 
 
+       
         question.options.forEach((option, index) => {
             const optionElement = document.createElement('div');
             optionElement.classList.add('option');
             optionElement.textContent = option;
             optionElement.dataset.index = index.toString();
             this.optionsContainer.appendChild(optionElement);
+
+            
+            optionElement.addEventListener('click', () => {
+                this.handleOptionClick(index); 
+            });
         });
+    }
+
+  
+    private handleOptionClick(selectedIndex: number): void {
+        const options = this.optionsContainer.querySelectorAll('.option');
+        options.forEach((option, index) => {
+            option.classList.remove('selected');
+            if (index === selectedIndex) {
+                option.classList.add('selected');
+            }
+        });
+
+
+        this.AnswerClick(selectedIndex);
+    }
+
+    private AnswerClick: (index: number) => void = () => {};
+
+    setAnswerClickCallback(callback: (index: number) => void): void {
+        this.AnswerClick = callback;
     }
 
     updateTimer(time: number): void {
@@ -142,7 +168,6 @@ export class QuizUI {
     }
 
     bindStartButton(handler: () => void): void {
-
         this.startButton.addEventListener('click', handler);
     }
 
@@ -152,12 +177,5 @@ export class QuizUI {
 
     bindRestartButton(handler: () => void): void {
         this.restartButton.addEventListener('click', handler);
-    }
-
-    bindOptionClick(handler: (index: number) => void): void {
-        this.optionsContainer.addEventListener('click', (e: MouseEvent) => {
-            const target = e.target as HTMLElement;
-            
-        });
     }
 }
