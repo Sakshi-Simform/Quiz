@@ -1,4 +1,4 @@
-
+import {GameState} from "../model"
 
 export class StorageService {
     private static readonly STORAGE_KEY = 'quizGameState';
@@ -16,3 +16,4 @@ export class StorageService {
         localStorage.removeItem(StorageService.STORAGE_KEY);
     }
 }
+
